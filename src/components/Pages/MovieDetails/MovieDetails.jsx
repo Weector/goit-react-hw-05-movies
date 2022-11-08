@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
 
 const MovieDetails = () => {
-  const [movie, setMovie] = useState({});
+  // const [movie, setMovie] = useState({});
 
   const navigate = useNavigate();
   const params = useParams();
