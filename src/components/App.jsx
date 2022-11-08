@@ -1,24 +1,29 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import Cast from './Cast/Cast';
+import { lazy, Suspense } from 'react';
+import MyLoader from './loader/loader';
+
 import Navigator from './Navigator/Navigator';
-import Home from './Pages/Home/Home';
-import MovieDetails from './Pages/MovieDetails/MovieDetails';
-import Movies from './Pages/Movies/Movies';
-import Reviews from './Reviews/Reviews';
+const Home = lazy(() => import('./Pages/Home/Home'));
+const MovieDetails = lazy(() => import('./Pages/MovieDetails/MovieDetails'));
+const Movies = lazy(() => import('./Pages/Movies/Movies'));
+const Cast = lazy(() => import('./Cast/Cast'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 export const App = () => {
   return (
     <div>
       <Navigator />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="movies" element={<Movies />} />
-        <Route path="/movies/:movieId" element={<MovieDetails />}>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Route>
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
+      <Suspense fallback={MyLoader()}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="movies" element={<Movies />} />
+          <Route path="/movies/:movieId" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 };
