@@ -1,6 +1,7 @@
-import { moviesTrends } from 'components/API/moviesFetch';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+
+import { moviesTrends } from 'components/API/moviesFetch';
 import {
   Box,
   Container,

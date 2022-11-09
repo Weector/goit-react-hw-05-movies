@@ -1,6 +1,7 @@
-import { moviesSearch } from 'components/API/moviesFetch';
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { moviesSearch } from 'components/API/moviesFetch';
+import { Button, Container, Field, Form, Item } from './movies.styled';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -21,22 +22,22 @@ const Movies = () => {
   };
 
   return (
-    <div>
-      <h1>Movies</h1>
-      <form onSubmit={handleSubmit}>
-        <input name="query" type="text" />
-        <button type="submit">SEARCH</button>
-      </form>
-      <ul>
+    <Container>
+      <h1>Search movies</h1>
+      <Form onSubmit={handleSubmit}>
+        <Field name="query" type="text" />
+        <Button type="submit">SEARCH</Button>
+      </Form>
+      <ol>
         {movies?.results?.map(({ id, title }) => (
-          <li key={id}>
+          <Item key={id}>
             <Link to={`/movies/${id}`} state={{ from: location }}>
               {title}
             </Link>
-          </li>
+          </Item>
         ))}
-      </ul>
-    </div>
+      </ol>
+    </Container>
   );
 };
 export default Movies;

@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 30px;
+  max-width: 1400px;
   padding: 20px;
   text-align: center;
   border-radius: 10px;
@@ -21,7 +23,6 @@ export const List = styled.ul`
   flex-wrap: wrap;
   justify-content: center;
   gap: 60px;
-  max-width: 1400px;
   padding: 0;
 `;
 

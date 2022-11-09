@@ -1,7 +1,8 @@
+import { useEffect, useState } from 'react';
 import { moviesReviews } from 'components/API/moviesFetch';
-import { useEffect } from 'react';
-import { useState } from 'react';
+
 import { useParams } from 'react-router-dom';
+import { List } from './reviews.styled';
 
 const Reviews = () => {
   const [review, setReview] = useState([]);
@@ -12,7 +13,7 @@ const Reviews = () => {
   }, [params]);
 
   return (
-    <ul>
+    <List>
       {review.total_pages
         ? review?.results?.map(({ author, content, id }) => (
             <li key={id}>
@@ -21,7 +22,7 @@ const Reviews = () => {
             </li>
           ))
         : 'There no reviews for this movie :('}
-    </ul>
+    </List>
   );
 };
 export default Reviews;

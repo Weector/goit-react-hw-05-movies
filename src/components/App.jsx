@@ -1,7 +1,7 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-import MyLoader from './loader/loader';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
+import MyLoader from './loader/loader';
 import Navigator from './Navigator/Navigator';
 const Home = lazy(() => import('./Pages/Home/Home'));
 const MovieDetails = lazy(() => import('./Pages/MovieDetails/MovieDetails'));
@@ -13,7 +13,7 @@ export const App = () => {
   return (
     <div>
       <Navigator />
-      <Suspense fallback={MyLoader()}>
+      <Suspense fallback={<MyLoader />}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="movies" element={<Movies />} />
